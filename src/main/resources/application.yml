@@ -1,0 +1,12 @@
+# spring boot服务监听端口
+server:
+  port: 8083
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://47.105.161.92:5432/flyMan
+    username: dj
+    password: 123dj321
+# myBatis
+mybatis:
+  type-aliases-package: com.djxc.dhome.dao
