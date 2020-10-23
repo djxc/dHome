@@ -1,20 +1,17 @@
 package com.djxc.dhome.entity;
 
-public class User {
+/**
+ * 权限认证实体类
+ */
+public class AuthUser {
     private int id;
     private String name;
     private String passwd;
     private int authority;
 
-    public User() {
-    }
+    public AuthUser() {}
 
-    public User(String name, String passwd){
-        this.name = name;
-        this.passwd = passwd;
-    }
-
-    public User(int id, String name, String passwd, int authority) {
+    public AuthUser(int id, String name, String passwd, int authority) {
         this.id = id;
         this.name = name;
         this.passwd = passwd;

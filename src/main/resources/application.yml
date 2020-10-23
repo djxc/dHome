@@ -4,9 +4,11 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://***.***.***.***:5432/flyMan
-    username: **
-    password: ***
+    url: jdbc:postgresql://10.249.7.251:5432/tree_manage
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://124.70.159.68:3306/devout
+    username: postgres # root
+    password: 123
 # myBatis
 mybatis:
   type-aliases-package: com.djxc.dhome.dao
