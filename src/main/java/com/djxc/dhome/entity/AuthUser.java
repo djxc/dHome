@@ -1,5 +1,9 @@
 package com.djxc.dhome.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
+
 /**
  * 权限认证实体类
  */
@@ -8,14 +12,24 @@ public class AuthUser {
     private String name;
     private String passwd;
     private int authority;
+    private Collection<? extends GrantedAuthority> role;
 
     public AuthUser() {}
 
-    public AuthUser(int id, String name, String passwd, int authority) {
+    public AuthUser(int id, String name, String passwd, int authority, Collection<? extends GrantedAuthority> role) {
         this.id = id;
         this.name = name;
         this.passwd = passwd;
         this.authority = authority;
+        this.role = role;
+    }
+
+    public Collection<? extends GrantedAuthority> getRole() {
+        return role;
+    }
+
+    public void setRole(Collection<? extends GrantedAuthority> role) {
+        this.role = role;
     }
 
     public int getId() {

@@ -1,8 +1,9 @@
 package com.djxc.dhome.controller;
 
+import com.djxc.dhome.annotation.AnonymousAccess;
 import com.djxc.dhome.entity.User;
 import com.djxc.dhome.service.IUserService;
-import com.djxc.dhome.util.TokenUtil;
+import com.djxc.dhome.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 用户登录
+ * @FileDescription 用户登录控制器
+ * 1、用户服务的注入，根据用户服务进行查询等操作
+ * @Author small dj
+ * @Date 2020-11-02
+ * @LastFileEdit 2020-11-02
+ * @LastFileEditor small dj
+ */
 
 @RestController
 public class LoginController {
@@ -18,6 +28,11 @@ public class LoginController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 如果请求不需要进行权限认证，则添加AnonymousAccess注释
+     * @return
+     */
+    @AnonymousAccess
     @RequestMapping(value = "/")
     public String index() {
         return "hello world";
@@ -48,6 +63,7 @@ public class LoginController {
      * @param user
      * @return authority 返回用户的权限
      */
+    @AnonymousAccess
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<Object> authLogin(@RequestBody User user) {
         String name = user.getName();
@@ -57,7 +73,7 @@ public class LoginController {
         Map<String, Object> response = new HashMap<>();
         if(user_find != null) {
             if(passwd.equals(user_find.getPasswd())) {
-                String token = TokenUtil.createToken(name, passwd);
+                String token = JwtUtil.sign(name, passwd);
                 response.put("status", "ok");
                 response.put("info", user_find);
                 response.put("token", token);

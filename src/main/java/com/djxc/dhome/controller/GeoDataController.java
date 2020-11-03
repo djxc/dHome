@@ -4,6 +4,7 @@ import com.djxc.dhome.entity.GeoLayerManage;
 import com.djxc.dhome.entity.RasterGeoLayerManage;
 import com.djxc.dhome.service.IGeoDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
